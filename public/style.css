@@ -1,0 +1,39 @@
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: black;
+  font-family: sans-serif;
+}
+
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#hydraCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+
+#ui {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 8px;
+  color: white;
+}
+
+select, button {
+  margin-left: 10px;
+  font-size: 1rem;
+  padding: 5px;
+}

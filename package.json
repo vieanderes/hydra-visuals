@@ -1,0 +1,24 @@
+{
+  "name": "hydra-visuals",
+  "version": "1.0.0",
+  "description": "Welcome to my collection of [Hydra](https://hydra.ojack.xyz/) live-coded visuals and generative art experiments.   This repo contains sketches, ideas, and compositions using the Hydra framework — a real-time video synth environment created for artists and coders.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vieanderes/hydra-visuals.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vieanderes/hydra-visuals/issues"
+  },
+  "homepage": "https://github.com/vieanderes/hydra-visuals#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

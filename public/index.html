@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hydra Sketch Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div id="ui">
+    <label for="sketchSelector">Sketch:</label>
+    <select id="sketchSelector"></select>
+    <button id="reloadBtn">🔁 Reload</button>
+  </div>
+
+  <script src="https://unpkg.com/hydra-synth"></script>
+  <script>
+    // 1️⃣ Determine device pixel ratio
+    const dpr = window.devicePixelRatio || 1;                                   // :contentReference[oaicite:8]{index=8}
+    const cw = window.innerWidth * dpr;
+    const ch = window.innerHeight * dpr;
+
+    // 2️⃣ Create the Hydra canvas at high resolution
+    const canvas = document.createElement("canvas");
+    canvas.width = cw;
+    canvas.height = ch;
+    // Style it down to CSS pixels for display
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    canvas.id = "hydraCanvas";
+    document.body.appendChild(canvas);
+
+    // 3️⃣ Init Hydra with matching internal resolution
+    const hydra = new Hydra({
+      canvas,
+      detectAudio: false,
+      makeGlobal: true,
+      width: cw,
+      height: ch
+    });
+
+    const sketchSelector = document.getElementById('sketchSelector');
+    const reloadBtn = document.getElementById('reloadBtn');
+
+    // Load a sketch file and eval its code
+    function loadSketch(filename) {
+      fetch(`/sketches/${filename}`)
+        .then(r => r.text())
+        .then(code => {
+          try { eval(code); }
+          catch (err) { console.error("Sketch error:", err); }
+        });
+    }
+
+    // Fetch available sketches from the server
+    async function fetchSketches() {
+      const res = await fetch('/sketches');
+      const list = await res.json();
+      sketchSelector.innerHTML = "";
+      list.forEach(f => {
+        const opt = document.createElement('option');
+        opt.value = f;
+        opt.textContent = f;
+        sketchSelector.appendChild(opt);
+      });
+      // Load default or URL-specified sketch
+      const params = new URLSearchParams(window.location.search);
+      const ds = params.get('sketch') || list[0];
+      sketchSelector.value = ds;
+      loadSketch(ds);
+    }
+
+    sketchSelector.addEventListener('change', e => {
+      const s = e.target.value;
+      const p = new URLSearchParams(window.location.search);
+      p.set('sketch', s);
+      history.replaceState({}, '', `${location.pathname}?${p}`);
+      loadSketch(s);
+    });
+
+    reloadBtn.addEventListener('click', () => loadSketch(sketchSelector.value));
+
+    fetchSketches();
+  </script>
+</body>
+</html>
