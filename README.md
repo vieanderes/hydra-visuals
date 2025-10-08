@@ -107,4 +107,4 @@ See [`LICENSE`](LICENSE) for full details.
 Created by **Vie**.
 Inspired by the Hydra community and the vibrant live‑coding ecosystem.
 
-Made with 💙 and sine waves.
+Made with heart and sine waves.
