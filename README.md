@@ -1,10 +1,10 @@
-# ✨ Hydra Visuals
+# Hydra Visuals
 
 Welcome to **Hydra Visuals**, a collection of live‑coded generative art sketches built with [Hydra](https://hydra.ojack.xyz/). These experiments showcase everything from soft dreamscapes to kaleidoscopic geometry, all running in your browser without any external editor.
 
 ---
 
-## 🔧 Project Structure
+## Project Structure
 
 ```text
 hydra-visuals/
@@ -24,7 +24,7 @@ hydra-visuals/
 
 ---
 
-## 🛠 Dependencies & Installation
+## Dependencies & Installation
 
 This project requires Node.js (v14+). It uses Express to serve static files and provide the sketches API.
 
@@ -46,7 +46,7 @@ This project requires Node.js (v14+). It uses Express to serve static files and 
 
 ---
 
-## 🚀 Running Locally
+## Running Locally
 
 1. Start the server:
 
@@ -67,7 +67,7 @@ You’ll see a dropdown listing all `.js` sketches, plus a **Reload** button to 
 
 ---
 
-## 📂 Adding Your Own Sketches
+## Adding Your Own Sketches
 
 1. Create a new file in `public/sketches/`, e.g. `my-sketch.js`.
 2. Write pure Hydra code (ending with `render(o0)` or similar).
@@ -77,7 +77,7 @@ You’ll see a dropdown listing all `.js` sketches, plus a **Reload** button to 
 
 ---
 
-## 🛠 How It Works
+## How It Works
 
 * **server.js** uses Express to serve everything in `public/` and exposes `/sketches` to list all `.js` files.
 * **index.html** fetches that list, populates a `<select>`, and uses `eval()` to load the selected sketch.
@@ -85,7 +85,7 @@ You’ll see a dropdown listing all `.js` sketches, plus a **Reload** button to 
 
 ---
 
-## ▶️ Usage Tips
+## Usage Tips
 
 * Press **Reload** after editing a sketch file to see your updates instantly.
 * Load a sketch by default via URL:
@@ -94,7 +94,7 @@ You’ll see a dropdown listing all `.js` sketches, plus a **Reload** button to 
 
 ---
 
-## 📜 License
+## License
 
 This project is licensed under the **GNU General Public License v3.0**.
 You are free to use, modify, and share this work; any distributed derivatives must carry the same license.
@@ -102,7 +102,7 @@ See [`LICENSE`](LICENSE) for full details.
 
 ---
 
-## 🙌 Credits
+## Credits
 
 Created by **Vie**.
 Inspired by the Hydra community and the vibrant live‑coding ecosystem.
